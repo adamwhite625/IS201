@@ -17,6 +17,7 @@ import java.sql.Statement;
 public class conn {
 
 Connection connection;
+Statement statement;
 
     public conn() {
 

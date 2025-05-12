@@ -14,57 +14,61 @@ public class Login extends JFrame implements ActionListener {
     JButton b1, b2;
 
     public Login() {
-        setSize(750, 300);
-        setLocation(400, 270);
+        setSize(900, 400); // Tăng kích thước cửa sổ
+        setLocation(300, 200);
         setLayout(null);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         JLabel nameLabel = new JLabel("Username");
-        nameLabel.setBounds(40, 20, 100, 30);
-        nameLabel.setFont(new Font("Tahoma", Font.BOLD, 16));
+        nameLabel.setBounds(50, 50, 150, 30);
+        nameLabel.setFont(new Font("Tahoma", Font.BOLD, 18));
+        nameLabel.setForeground(Color.WHITE);
         add(nameLabel);
 
         textField = new JTextField();
-        textField.setBounds(150, 20, 200, 30);
-        textField.setFont(new Font("Tahoma", Font.BOLD, 15));
-        textField.setBackground(new Color(255, 179, 0));
+        textField.setBounds(200, 50, 250, 30);
+        textField.setFont(new Font("Tahoma", Font.BOLD, 16));
+        textField.setBackground(new Color(176, 224, 230)); // Sky Blue
+        textField.setForeground(Color.BLACK);
         add(textField);
 
         JLabel passwordLabel = new JLabel("Password");
-        passwordLabel.setBounds(40, 70, 100, 30);
-        passwordLabel.setFont(new Font("Tahoma", Font.BOLD, 16));
+        passwordLabel.setBounds(50, 120, 150, 30);
+        passwordLabel.setFont(new Font("Tahoma", Font.BOLD, 18));
+        passwordLabel.setForeground(Color.WHITE);
         add(passwordLabel);
 
         jPasswordField = new JPasswordField();
-        jPasswordField.setBounds(150, 70, 200, 30);
-        jPasswordField.setFont(new Font("Tahoma", Font.PLAIN, 15));
-        jPasswordField.setBackground(new Color(255, 179, 0));
+        jPasswordField.setBounds(200, 120, 250, 30);
+        jPasswordField.setFont(new Font("Tahoma", Font.PLAIN, 16));
+        jPasswordField.setBackground(new Color(176, 224, 230)); // Sky Blue
+        jPasswordField.setForeground(Color.BLACK);
         add(jPasswordField);
 
         b1 = new JButton("Login");
-        b1.setBounds(40, 140, 120, 30);
-        b1.setFont(new Font("Serif", Font.BOLD, 15));
-        b1.setBackground(Color.BLACK);
+        b1.setBounds(50, 200, 150, 40);
+        b1.setFont(new Font("Serif", Font.BOLD, 18));
+        b1.setBackground(new Color(255, 165, 0)); // Orange
         b1.setForeground(Color.WHITE);
         b1.addActionListener(this);
         add(b1);
 
         b2 = new JButton("Cancel");
-        b2.setBounds(180, 140, 120, 30);
-        b2.setFont(new Font("Serif", Font.BOLD, 15));
-        b2.setBackground(Color.BLACK);
+        b2.setBounds(250, 200, 150, 40);
+        b2.setFont(new Font("Serif", Font.BOLD, 18));
+        b2.setBackground(new Color(255, 165, 0)); // Orange
         b2.setForeground(Color.WHITE);
         b2.addActionListener(this);
         add(b2);
 
-         // Thêm hình ảnh login.png vào phía bên phải
-         ImageIcon icon = new ImageIcon(ClassLoader.getSystemResource("icon/login.png"));
-         Image scaledImage = icon.getImage().getScaledInstance(200, 200, Image.SCALE_SMOOTH);
-         JLabel imageLabel = new JLabel(new ImageIcon(scaledImage));
-         imageLabel.setBounds(400, 20, 200, 200);
-         add(imageLabel);
+        // Thêm hình ảnh login.png vào phía bên phải
+        ImageIcon icon = new ImageIcon(ClassLoader.getSystemResource("icon/login.png"));
+        Image scaledImage = icon.getImage().getScaledInstance(250, 250, Image.SCALE_SMOOTH);
+        JLabel imageLabel = new JLabel(new ImageIcon(scaledImage));
+        imageLabel.setBounds(500, 50, 300, 250);
+        add(imageLabel);
 
-        getContentPane().setBackground(new Color(109, 164, 170));
+        getContentPane().setBackground(new Color(135, 206, 235)); // Sky Blue
         setVisible(true);
     }
 

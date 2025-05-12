@@ -5,7 +5,9 @@
         <group>
             <file>file:/D:/QuanLyBenhVien/src/com/mycompany/quan_ly_benh_vien/conn.java</file>
             <file>file:/D:/QuanLyBenhVien/src/com/mycompany/quan_ly_benh_vien/Login.java</file>
-            <file>file:/D:/QuanLyBenhVien/src/com/mycompany/quan_ly_benh_vien/test.java</file>
+            <file>file:/D:/QuanLyBenhVien/src/com/mycompany/quan_ly_benh_vien/NewPatient.java</file>
+            <file>file:/D:/QuanLyBenhVien/src/com/mycompany/quan_ly_benh_vien/Reception.java</file>
+            <file>file:/D:/QuanLyBenhVien/src/com/mycompany/quan_ly_benh_vien/DatLichKham.java</file>
         </group>
     </open-files>
 </project-private>
