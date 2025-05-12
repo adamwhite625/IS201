@@ -1,151 +1,172 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.mycompany.quan_ly_benh_vien;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.Date;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class NewPatient extends JFrame {
 
-    JComboBox<String> comboBox;
-    JTextField textFieldNumber, textName, textFieldDisease, textFieldDeposite;
-    JRadioButton r1, r2;
-    JLabel date;
-    JButton b1, b2;
+    private JTextField txtMaBN, txtHoTen, txtNgaySinh, txtSDT, txtDiaChi, txtEmail, txtCCCD;
+    private JRadioButton rbNam, rbNu, rbKhac;
+    private JButton btnThem, btnQuayLai;
 
     public NewPatient() {
-        JPanel panel = new JPanel();
-        panel.setBounds(5, 5, 840, 540);
-        panel.setBackground(new Color(90, 156, 163));
-        panel.setLayout(null);
-        add(panel);
-
-        ImageIcon imageIcon = new ImageIcon(ClassLoader.getSystemResource("icon/patient.png"));
-        Image image = imageIcon.getImage().getScaledInstance(200, 200, Image.SCALE_DEFAULT);
-        ImageIcon imageIcon1 = new ImageIcon(image);
-        JLabel label = new JLabel(imageIcon1);
-        label.setBounds(550, 150, 200, 200);
-        panel.add(label);
-
-        JLabel labelName = new JLabel("NEW PATIENT FORM");
-        labelName.setBounds(118, 11, 260, 53);
-        labelName.setFont(new Font("Tahoma", Font.BOLD, 20));
-        panel.add(labelName);
-
-        JLabel labelID = new JLabel("ID:");
-        labelID.setBounds(35, 76, 200, 14);
-        labelID.setFont(new Font("Tahoma", Font.BOLD, 14));
-        labelID.setForeground(Color.WHITE);
-        panel.add(labelID);
-
-        comboBox = new JComboBox<>(new String[]{"Aadhar Card", "Voter Id", "Driving License"});
-        comboBox.setBounds(271, 73, 150, 20);
-        comboBox.setBackground(new Color(3, 45, 48));
-        comboBox.setForeground(Color.WHITE);
-        comboBox.setFont(new Font("Tahoma", Font.BOLD, 14));
-        panel.add(comboBox);
-
-        JLabel labelNumber = new JLabel("Number:");
-        labelNumber.setBounds(35, 111, 200, 14);
-        labelNumber.setFont(new Font("Tahoma", Font.BOLD, 14));
-        labelNumber.setForeground(Color.WHITE);
-        panel.add(labelNumber);
-
-        textFieldNumber = new JTextField();
-        textFieldNumber.setBounds(271, 111, 150, 20);
-        panel.add(textFieldNumber);
-
-        JLabel labelName1 = new JLabel("Name:");
-        labelName1.setBounds(35, 151, 200, 14);
-        labelName1.setFont(new Font("Tahoma", Font.BOLD, 14));
-        labelName1.setForeground(Color.WHITE);
-        panel.add(labelName1);
-
-        textName = new JTextField();
-        textName.setBounds(271, 151, 150, 20);
-        panel.add(textName);
-
-        JLabel labelGender = new JLabel("Gender:");
-        labelGender.setBounds(35, 191, 200, 14);
-        labelGender.setFont(new Font("Tahoma", Font.BOLD, 14));
-        labelGender.setForeground(Color.WHITE);
-        panel.add(labelGender);
-
-        r1 = new JRadioButton("Male");
-        r1.setFont(new Font("Tahoma", Font.BOLD, 14));
-        r1.setForeground(Color.WHITE);
-        r1.setBackground(new Color(109, 164, 170));
-        r1.setBounds(271, 191, 80, 15);
-        panel.add(r1);
-
-        r2 = new JRadioButton("Female");
-        r2.setFont(new Font("Tahoma", Font.BOLD, 14));
-        r2.setForeground(Color.WHITE);
-        r2.setBackground(new Color(109, 164, 170));
-        r2.setBounds(350, 191, 80, 15);
-        panel.add(r2);
-
-        ButtonGroup genderGroup = new ButtonGroup();
-        genderGroup.add(r1);
-        genderGroup.add(r2);
-
-        JLabel labelDisease = new JLabel("Disease:");
-        labelDisease.setBounds(35, 231, 200, 14);
-        labelDisease.setFont(new Font("Tahoma", Font.BOLD, 14));
-        labelDisease.setForeground(Color.WHITE);
-        panel.add(labelDisease);
-
-        textFieldDisease = new JTextField();
-        textFieldDisease.setBounds(271, 231, 150, 20);
-        panel.add(textFieldDisease);
-
-        JLabel labelDate = new JLabel("Time:");
-        labelDate.setBounds(35, 316, 200, 14);
-        labelDate.setFont(new Font("Tahoma", Font.BOLD, 14));
-        labelDate.setForeground(Color.WHITE);
-        panel.add(labelDate);
-
-        Date date1 = new Date();
-        date = new JLabel("" + date1);
-        date.setBounds(271, 316, 250, 14);
-        date.setForeground(Color.WHITE);
-        date.setFont(new Font("Tahoma", Font.BOLD, 14));
-        panel.add(date);
-
-        JLabel labelDeposite = new JLabel("Deposit:");
-        labelDeposite.setBounds(35, 359, 200, 17);
-        labelDeposite.setFont(new Font("Tahoma", Font.BOLD, 14));
-        labelDeposite.setForeground(Color.WHITE);
-        panel.add(labelDeposite);
-
-        textFieldDeposite = new JTextField();
-        textFieldDeposite.setBounds(271, 359, 150, 20);
-        panel.add(textFieldDeposite);
-
-        b1 = new JButton("ADD");
-        b1.setBounds(100, 430, 120, 30);
-        b1.setForeground(Color.WHITE);
-        b1.setBackground(Color.BLACK);
-        panel.add(b1);
-
-        b2 = new JButton("Back");
-        b2.setBounds(260, 430, 120, 30);
-        b2.setForeground(Color.WHITE);
-        b2.setBackground(Color.BLACK);
-        panel.add(b2);
-
-        setUndecorated(true);
-        setSize(850, 550);
-        setLayout(null);
-        setLocation(300, 250);
+        setTitle("Thêm Bệnh Nhân");
+        setSize(600, 500);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setVisible(true);
+        setLocationRelativeTo(null);
+
+        JPanel panel = new JPanel(new GridLayout(9, 2, 10, 10));
+        panel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+
+        // Thêm các thành phần giao diện
+        panel.add(new JLabel("Mã bệnh nhân:"));
+        txtMaBN = new JTextField();
+        panel.add(txtMaBN);
+
+        panel.add(new JLabel("Họ tên:"));
+        txtHoTen = new JTextField();
+        panel.add(txtHoTen);
+
+        panel.add(new JLabel("Ngày sinh (yyyy-MM-dd):"));
+        txtNgaySinh = new JTextField();
+        panel.add(txtNgaySinh);
+
+        panel.add(new JLabel("Số điện thoại:"));
+        txtSDT = new JTextField();
+        panel.add(txtSDT);
+
+        panel.add(new JLabel("Địa chỉ:"));
+        txtDiaChi = new JTextField();
+        panel.add(txtDiaChi);
+
+        panel.add(new JLabel("Email:"));
+        txtEmail = new JTextField();
+        panel.add(txtEmail);
+
+        panel.add(new JLabel("CCCD:"));
+        txtCCCD = new JTextField();
+        panel.add(txtCCCD);
+
+        panel.add(new JLabel("Giới tính:"));
+        JPanel genderPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        rbNam = new JRadioButton("Nam");
+        rbNu = new JRadioButton("Nữ");
+        rbKhac = new JRadioButton("Khác");
+        ButtonGroup genderGroup = new ButtonGroup();
+        genderGroup.add(rbNam);
+        genderGroup.add(rbNu);
+        genderGroup.add(rbKhac);
+        genderPanel.add(rbNam);
+        genderPanel.add(rbNu);
+        genderPanel.add(rbKhac);
+        panel.add(genderPanel);
+
+        btnThem = new JButton("Thêm");
+        btnQuayLai = new JButton("Quay Lại");
+        panel.add(btnThem);
+        panel.add(btnQuayLai);
+
+        add(panel); // Thêm panel vào JFrame
+
+        // Xử lý sự kiện nút "Thêm"
+        btnThem.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String maBN = txtMaBN.getText().trim();
+                String hoTen = txtHoTen.getText().trim();
+                String ngaySinh = txtNgaySinh.getText().trim();
+                String sdt = txtSDT.getText().trim();
+                String diaChi = txtDiaChi.getText().trim();
+                String email = txtEmail.getText().trim();
+                String cccd = txtCCCD.getText().trim();
+                String gioiTinh = rbNam.isSelected() ? "Nam" : rbNu.isSelected() ? "Nữ" : "Khác";
+
+                if (maBN.isEmpty() || hoTen.isEmpty() || ngaySinh.isEmpty() || sdt.isEmpty() || diaChi.isEmpty() || email.isEmpty() || cccd.isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "Vui lòng nhập đầy đủ thông tin!", "Lỗi", JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+
+                themBenhNhan(maBN, hoTen, ngaySinh, gioiTinh, sdt, diaChi, email, cccd);
+            }
+        });
+
+        // Xử lý sự kiện nút "Quay Lại"
+        btnQuayLai.addActionListener(e -> setVisible(false));
+    }
+
+    private static Connection connect() {
+        try {
+            String url = "jdbc:mysql://localhost:3306/quan_ly_benh_vien";
+            String user = "root";
+            String password = "";
+            return DriverManager.getConnection(url, user, password);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Kết nối CSDL thất bại!");
+            return null;
+        }
+    }
+
+    private static void themBenhNhan(String maBN, String hoTen, String ngaySinh, String gioiTinh, String sdt, String diaChi, String email, String cccd) {
+        Connection conn = connect();
+        if (conn != null) {
+            try {
+                // Kiểm tra xem mã bệnh nhân đã tồn tại hay chưa
+                String checkSql = "SELECT COUNT(*) FROM BENHNHAN WHERE MaBN = ?";
+                try (PreparedStatement checkStmt = conn.prepareStatement(checkSql)) {
+                    checkStmt.setString(1, maBN);
+                    ResultSet rs = checkStmt.executeQuery();
+                    if (rs.next() && rs.getInt(1) > 0) {
+                        JOptionPane.showMessageDialog(null, "Mã bệnh nhân đã tồn tại!");
+                        return;
+                    }
+                }
+
+                // Thêm bệnh nhân mới
+                String sql = "INSERT INTO BENHNHAN (MaBN, HoTen, NgaySinh, GioiTinh, SDT, DiaChi, Email, CCCD) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+                try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
+                    pstmt.setString(1, maBN);
+                    pstmt.setString(2, hoTen);
+                    pstmt.setString(3, ngaySinh);
+                    pstmt.setString(4, gioiTinh);
+                    pstmt.setString(5, sdt);
+                    pstmt.setString(6, diaChi);
+                    pstmt.setString(7, email);
+                    pstmt.setString(8, cccd);
+
+                    int rowsInserted = pstmt.executeUpdate();
+                    if (rowsInserted > 0) {
+                        JOptionPane.showMessageDialog(null, "Thêm bệnh nhân thành công!");
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Thêm bệnh nhân không thành công!");
+                    }
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(null, "Lỗi khi thêm bệnh nhân!");
+            }
+        }
     }
 
     public static void main(String[] args) {
-        new NewPatient();
+        SwingUtilities.invokeLater(() -> {
+            new NewPatient().setVisible(true);
+        });
+
+        JButton btn1 = new JButton("Open New Patient");
+        btn1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                NewPatient newPatient = new NewPatient();
+                newPatient.setVisible(true); // Hiển thị giao diện thêm bệnh nhân
+            }
+        });
     }
 }
